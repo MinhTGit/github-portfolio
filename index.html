@@ -23,11 +23,24 @@
             color: white;
             padding: 40px 20px;
             text-align: center;
+            position: relative;
         }
 
         header h1 {
             margin: 0;
-            font-size: 42px;
+            font-size: 48px;
+        }
+
+        .last-update {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            background: rgba(255,255,255,0.08);
+            color: #f3f4f6;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
         }
 
         nav {
@@ -156,6 +169,12 @@
             gap: 10px;
         }
 
+        /* Place buttons directly below headings for specific cards */
+        .position-card .card-actions,
+        .project-card .card-actions {
+            margin-top: 12px;
+        }
+
         .card-actions a {
             display: inline-flex;
             align-items: center;
@@ -279,6 +298,7 @@
 
     <header>
         <h1>Minh Tran</h1>
+        <div class="last-update">Last update: 7/28/2026</div>
     </header>
 
     <nav>
@@ -293,16 +313,11 @@
 
         <section class="top-card position-card">
             <h2>Current Position</h2>
-            <div class="position-title">Retail Sales Associate — Staples</div>
-            <div class="position-meta">Carlsbad, CA · Feb 2026 – Present</div>
-            <p>
-                Working in a fast-paced retail environment supporting customers,
-                troubleshooting products, and handling checkout and returns.
-            </p>
+            <div class="position-title">Research Data Intern — UC San Diego Health — San Diego, CA</div>
+            <div class="position-meta">San Diego, CA · Jan 2026 – Present</div>
             <ul>
-                <li>Help customers with product questions, returns, and basic troubleshooting.</li>
-                <li>Process POS transactions and manage high-volume checkout lines.</li>
-                <li>Recommend compatible devices, accessories, and printer supplies.</li>
+                <li>Collaborating with a senior data scientist to strengthen data engineering and analytics skills through hands-on projects using Python, SQL, Spark, Pandas, and Power BI.</li>
+                <li>Applying data transformation, analysis, and visualization techniques to solve business problems and improve data-driven decision-making.</li>
             </ul>
             <div class="card-actions">
                 <a class="btn-primary" href="experience.html">View Experience</a>
@@ -366,20 +381,16 @@
 
         <section class="top-card project-card">
             <div class="highlight-badge">Latest Highlight</div>
-            <h2>Auto Extraction Music Script</h2>
-            <div class="project-meta">Last update: 6/15/2026</div>
+            <h2>Think-A-Thon 2026</h2>
+            <div class="project-meta">Last update: 7/22/2026</div>
             <p>
-                My latest project is a Python-based music extraction pipeline that batch downloads
-                and organizes audio from YouTube playlists.
+                Participated in Viet Career’s Think-A-Thon 2026 to analyze Spotify's freemium model and propose product solutions.
             </p>
             <ul>
-                <li>Uses yt-dlp and FFmpeg for high-quality MP3 extraction.</li>
-                <li>Automates playlist processing and file organization.</li>
-                <li>Shown in the project page with screenshots and captions.</li>
+                <li>Researched Spotify's freemium model, AI personalization, user behavior, and competitive landscape.</li>
+                <li>Proposed the AI Smart-Mix concept and evaluated feasibility, costs, and risks.</li>
+                <li>Designed an A/B testing and measurement plan to track conversion, retention, and engagement.</li>
             </ul>
-            <div class="project-image-preview">
-                <img src="Project_Images/Auto_Extraction_Music_Script_Images/1.png" alt="Auto Extraction Music Script preview">
-            </div>
             <div class="card-actions">
                 <a class="btn-primary" href="project.html">View Project</a>
                 <a class="btn-secondary" href="https://github.com/Doremegalul/Auto_Extraction_Music_Script" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
