@@ -346,7 +346,14 @@
                 link: '#',
                 description: 'Participated in Viet Career’s Think-A-Thon 2026 analyzing Spotify\'s freemium model; proposed the AI Smart-Mix product concept, assessed feasibility and risks, and developed an A/B testing plan to measure conversion, retention, and engagement.',
                 tags: ['Product', 'AI', 'Research'],
-                gallery: []
+                gallery: [
+                    {
+                        src: 'Project_Images/Think-A-Ton_2026_Viet_Career/Spotify Expedition Presentation.pdf',
+                        alt: 'Think-A-Thon 2026 PDF presentation',
+                        caption: 'Think-A-Thon 2026 presentation PDF',
+                        type: 'pdf'
+                    }
+                ]
             },
             {
                 title: 'Auto Extraction Music Script',
@@ -393,8 +400,18 @@
                 link: 'https://github.com/Doremegalul/Candy_Sales_Data_Mart_ETL_Project#candy-sales-data-mart-etl-project',
                 description: 'Designed and implemented a SQL-based ETL pipeline to consolidate three years of legacy sales datasets into a unified staging table for analytics and reporting.',
                 tags: ['SQL', 'ETL', 'Data Mart'],
-                image: null,
-                imageAlt: ''
+                gallery: [
+                    {
+                        src: 'Project_Images/Candy_Sales_Data_Mart_ETL_Project/1.png',
+                        alt: 'Candy Sales Data Mart ETL design',
+                        caption: 'ETL pipeline design and staging overview'
+                    },
+                    {
+                        src: 'Project_Images/Candy_Sales_Data_Mart_ETL_Project/2.png',
+                        alt: 'Candy Sales Data Mart SQL flow',
+                        caption: 'SQL flow and data transformation examples'
+                    }
+                ]
             },
             {
                 title: 'Weather Images Deep Learning',
@@ -402,8 +419,23 @@
                 link: 'https://github.com/Doremegalul/Weather_Images_Deep_Learning',
                 description: 'A deep learning project that classifies road surface conditions using roadside images and weather data. It tackles winter road monitoring with a custom dataset from public sources and weather APIs.',
                 tags: ['Deep Learning', 'Python', 'Computer Vision'],
-                image: null,
-                imageAlt: ''
+                gallery: [
+                    {
+                        src: 'Project_Images/Weather_Images_Deep_Learning/1.png',
+                        alt: 'Weather images dataset example',
+                        caption: 'Dataset preview and labeling process'
+                    },
+                    {
+                        src: 'Project_Images/Weather_Images_Deep_Learning/2.png',
+                        alt: 'Model training and evaluation',
+                        caption: 'Model training and accuracy analysis'
+                    },
+                    {
+                        src: 'Project_Images/Weather_Images_Deep_Learning/3.png',
+                        alt: 'Prediction results and dashboard',
+                        caption: 'Prediction outputs and result visualization'
+                    }
+                ]
             },
             {
                 title: 'Client Server Chatroom',
@@ -453,6 +485,14 @@
                 activeGallery = project.gallery;
                 activeGalleryIndex = 0;
                 renderGallery();
+            } else if (project.image) {
+                activeGallery = [{
+                    src: project.image,
+                    alt: project.imageAlt || project.title,
+                    caption: project.title
+                }];
+                activeGalleryIndex = 0;
+                renderGallery();
             } else {
                 detailMedia.innerHTML = '<div class="project-modal-placeholder">Image later. This project will show a screenshot, GIF, or video here.</div>';
             }
@@ -460,9 +500,20 @@
 
         function renderGallery() {
             const slide = activeGallery[activeGalleryIndex];
+            const slideSrc = encodeURI(slide.src);
+            const slideHtml = slide.type === 'pdf' || slide.src.match(/\.pdf$/i)
+                ? `
+                    <object data="${slideSrc}" type="application/pdf" width="100%" height="100%">
+                        <p style="color: white; padding: 24px;">PDF preview not available. <a href="${slideSrc}" target="_blank" rel="noopener noreferrer" style="color: #bfdbfe; text-decoration: underline;">Open the PDF</a>.</p>
+                    </object>
+                `
+                : `
+                    <img src="${slideSrc}" alt="${slide.alt}">
+                `;
+
             detailMedia.innerHTML = `
                 <div class="gallery-frame">
-                    <img src="${slide.src}" alt="${slide.alt}">
+                    ${slideHtml}
                     <div class="gallery-caption">${slide.caption}</div>
                 </div>
                 <div class="gallery-controls">
